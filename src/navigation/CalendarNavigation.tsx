@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Calendar from '../screen/Calander/Calander';
 import {AllScreenList} from '../screen/AllScreenProps';
+import Calendar from '../screen/calander/Calander';
 
 const CalendarNavigation = () => {
   const Stack = createStackNavigator();
