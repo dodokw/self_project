@@ -9,40 +9,34 @@
  */
 
 import React, {type PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import BottomNavigation from './src/navigation/BottomNavigation';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {StatusBar} from 'react-native';
+import {Text, TextInput} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import {CustomText} from './src/tools/CustomText';
+interface TextWithDefaultProps extends Text {
+  defaultProps?: {allowFontScaling?: boolean};
+}
+
+interface TextInputWithDefaultProps extends TextInput {
+  defaultProps?: {allowFontScaling?: boolean};
+}
+
+(Text as unknown as TextWithDefaultProps).defaultProps =
+  (Text as unknown as TextWithDefaultProps).defaultProps || {};
+(Text as unknown as TextWithDefaultProps).defaultProps!.allowFontScaling =
+  false;
+(TextInput as unknown as TextInputWithDefaultProps).defaultProps =
+  (TextInput as unknown as TextInputWithDefaultProps).defaultProps || {};
+(
+  TextInput as unknown as TextInputWithDefaultProps
+).defaultProps!.allowFontScaling = false;
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <CustomText>sss</CustomText>
-      {/* <TextRB>asd</TextRB> */}
+    <SafeAreaView style={{flex: 1}} edges={[]}>
+      <StatusBar />
+      <BottomNavigation />
     </SafeAreaView>
   );
 };
