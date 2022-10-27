@@ -6,6 +6,15 @@ import {CustomText} from '../../tools/CustomText';
 import MonthYear from '../../component/calendar/MonthYear/MonthYear';
 import {eachWeekOfInterval, subDays, addDays} from 'date-fns';
 import MonthDate from '../../component/calendar/dates/MonthDate';
+import {
+  PanGestureHandler,
+  PanGestureHandlerGestureEvent,
+} from 'react-native-gesture-handler';
+import Animated, {
+  useAnimatedGestureHandler,
+  useSharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
@@ -16,8 +25,10 @@ const Calendar = () => {
   return (
     <Container>
       <MonthYear date={date} setDate={setDate} month={month} year={year} />
+
       <MonthDate
         date={date}
+        setDate={setDate}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />

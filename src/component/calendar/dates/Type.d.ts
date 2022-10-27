@@ -1,5 +1,6 @@
 export type MonthDatesProps = {
-  date: Date | string;
+  date: Date | any;
+  setDate: any;
   selectedDate: Date;
   setSelectedDate: (date: Date) => void;
 };

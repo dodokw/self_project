@@ -11,7 +11,7 @@
 import React, {type PropsWithChildren} from 'react';
 import BottomNavigation from './src/navigation/BottomNavigation';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {StatusBar} from 'react-native';
+import {LogBox, StatusBar} from 'react-native';
 import {Text, TextInput} from 'react-native';
 
 interface TextWithDefaultProps extends Text {
@@ -31,6 +31,9 @@ interface TextInputWithDefaultProps extends TextInput {
 (
   TextInput as unknown as TextInputWithDefaultProps
 ).defaultProps!.allowFontScaling = false;
+
+LogBox.ignoreLogs(['Expected style']);
+// LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const App = () => {
   return (
