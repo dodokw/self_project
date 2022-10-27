@@ -87,16 +87,9 @@ const MonthDate: FC<MonthDatesProps> = ({
     };
   });
   useDerivedValue(() => {
-    //   if (y.value < 0) {
-    //     runOnJS(setValueCheck)(y.value);
-    //   }
     if (y.value < 15 && y.value > -15) {
       runOnJS(setValueCheck)(y.value);
-      console.log('asdas');
     }
-    // if (y.value > -100) {
-    //   console.log(y.value);
-    // }
   });
 
   //달력 애니메이션 끝
@@ -168,7 +161,6 @@ const MonthDate: FC<MonthDatesProps> = ({
               pagingEnabled={true}
               showsHorizontalScrollIndicator={false}
               onEndReached={() => {
-                console.log('end');
                 setDate(addMonths(date, 1));
               }}
               onScrollToIndexFailed={() => {

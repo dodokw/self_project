@@ -32,8 +32,7 @@ interface TextInputWithDefaultProps extends TextInput {
   TextInput as unknown as TextInputWithDefaultProps
 ).defaultProps!.allowFontScaling = false;
 
-LogBox.ignoreLogs(['Expected style']);
-// LogBox.ignoreAllLogs(); //Ignore all log notifications
+LogBox.ignoreLogs(['Expected style', 'RCTBridge required dispatch_sync']);
 
 const App = () => {
   return (
