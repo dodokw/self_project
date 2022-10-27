@@ -4,6 +4,7 @@ import {View, Text} from 'react-native';
 import {FlexView} from '../../tools/FlexView';
 import {CustomText} from '../../tools/CustomText';
 import {hp} from '../../tools/UI';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Home = () => {
   return (

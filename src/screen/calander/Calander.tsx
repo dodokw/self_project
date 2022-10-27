@@ -1,22 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import {FlexView} from '../../tools/FlexView';
 import {CustomText} from '../../tools/CustomText';
+import MonthYear from '../../component/calendar/MonthYear/MonthYear';
+import {eachWeekOfInterval, subDays, addDays} from 'date-fns';
+import MonthDate from '../../component/calendar/dates/MonthDate';
 
-const Calander = () => {
+const Calendar = () => {
+  const [date, setDate] = useState(new Date());
+  const month = date.toLocaleString('en-us', {month: 'short'});
+  const year = date.getFullYear();
+  const [selectedDate, setSelectedDate] = useState(date);
+
   return (
-    <FlexView>
-      <Container>
-        <CustomText>Calander</CustomText>
-      </Container>
-    </FlexView>
+    <Container>
+      <MonthYear date={date} setDate={setDate} month={month} year={year} />
+      <MonthDate
+        date={date}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
+    </Container>
   );
 };
 
-const Container = styled.View`
-  align-items: center;
-  justify-content: center;
+const Container = styled.SafeAreaView`
+  flex: 1;
+  background-color: #fff;
 `;
 
-export default Calander;
+export default Calendar;
